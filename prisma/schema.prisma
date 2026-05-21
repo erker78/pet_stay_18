@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model City {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  hotels    Hotel[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Service {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  hotels    Hotel[]  @relation("HotelServices")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PetType {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  hotels    Hotel[]  @relation("HotelPetTypes")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Hotel {
+  id           String       @id @default(cuid())
+  name         String
+  slug         String       @unique
+  cityId       String
+  city         City         @relation(fields: [cityId], references: [id])
+  district     String
+  address      String
+  phone        String?
+  lineId       String?
+  websiteUrl   String?
+  googleMapUrl String?
+  description  String
+  priceMin     Int
+  priceMax     Int
+  rating       Float        @default(0)
+  isFeatured   Boolean      @default(false)
+  isPublished  Boolean      @default(true)
+  hours        String?
+  sizeLimits   String[]
+  tags         String[]
+  images       HotelImage[]
+  services     Service[]    @relation("HotelServices")
+  petTypes     PetType[]    @relation("HotelPetTypes")
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  @@index([cityId])
+  @@index([isPublished, isFeatured])
+}
+
+model HotelImage {
+  id        String   @id @default(cuid())
+  hotelId   String
+  hotel     Hotel    @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  url       String
+  alt       String?
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model ContactInquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  lineId    String?
+  hotelName String?
+  city      String?
+  message   String
+  createdAt DateTime @default(now())
+}
