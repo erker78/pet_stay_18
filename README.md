@@ -45,6 +45,16 @@ npm run dev
 
 開啟 [http://localhost:3000](http://localhost:3000)。
 
+## Google AdSense
+
+全站已預留 Google AdSense Auto ads script。取得 AdSense publisher ID 後，在 `.env` 或部署平台環境變數設定：
+
+```env
+NEXT_PUBLIC_ADSENSE_CLIENT="ca-pub-xxxxxxxxxxxxxxxx"
+```
+
+未設定這個變數時，網站不會載入 AdSense script。
+
 ## 建置
 
 ```bash
