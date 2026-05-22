@@ -10,6 +10,7 @@ type RegionPageProps = {
   searchParams?: {
     filter?: string | string[];
     service?: string;
+    district?: string;
     sort?: string;
   };
 };
@@ -38,15 +39,22 @@ function sortHotels(items: Hotel[], sort?: string) {
   });
 }
 
-function nextFilterHref(citySlug: CitySlug, current: string[], filter: string) {
+function getParams(currentFilters: string[], district?: string, sort?: string) {
+  const params = new URLSearchParams();
+  currentFilters.forEach((item) => params.append("filter", item));
+  if (district) params.set("district", district);
+  if (sort) params.set("sort", sort);
+  return params;
+}
+
+function nextFilterHref(citySlug: CitySlug, current: string[], filter: string, district?: string, sort?: string) {
   const set = new Set(current);
   if (set.has(filter)) {
     set.delete(filter);
   } else {
     set.add(filter);
   }
-  const params = new URLSearchParams();
-  Array.from(set).forEach((item) => params.append("filter", item));
+  const params = getParams(Array.from(set), district, sort);
   const query = params.toString();
   return query ? `/${citySlug}?${query}` : `/${citySlug}`;
 }
@@ -57,7 +65,12 @@ export function RegionPage({ citySlug, searchParams }: RegionPageProps) {
     ...(Array.isArray(searchParams?.filter) ? searchParams?.filter : searchParams?.filter ? [searchParams.filter] : []),
     ...(searchParams?.service ? [searchParams.service] : [])
   ];
-  const hotels = sortHotels(getHotelsByCity(citySlug).filter((hotel) => hotelMatches(hotel, selected)), searchParams?.sort);
+  const cityHotels = getHotelsByCity(citySlug);
+  const districts = Array.from(new Set(cityHotels.map((hotel) => hotel.district)));
+  const hotels = sortHotels(
+    cityHotels.filter((hotel) => hotelMatches(hotel, selected) && (!searchParams?.district || hotel.district === searchParams.district)),
+    searchParams?.sort
+  );
 
   return (
     <main>
@@ -77,6 +90,28 @@ export function RegionPage({ citySlug, searchParams }: RegionPageProps) {
             <SlidersHorizontal className="h-5 w-5 text-primary" />
             條件篩選
           </div>
+          <div className="mt-5">
+            <p className="text-sm font-semibold">行政區</p>
+            <div className="mt-3 flex flex-wrap gap-2 lg:grid">
+              <Button asChild variant={searchParams?.district ? "outline" : "default"} className="justify-start">
+                <Link href={`/${citySlug}`}>全部行政區</Link>
+              </Button>
+              {districts.map((district) => {
+                const params = getParams(selected, district, searchParams?.sort);
+                return (
+                  <Button
+                    key={district}
+                    asChild
+                    variant={searchParams?.district === district ? "default" : "outline"}
+                    className="justify-start"
+                  >
+                    <Link href={`/${citySlug}?${params.toString()}`}>{district}</Link>
+                  </Button>
+                );
+              })}
+            </div>
+          </div>
+          <p className="mt-6 text-sm font-semibold">服務條件</p>
           <div className="mt-4 flex flex-wrap gap-2 lg:grid">
             {filterOptions.map((filter) => {
               const active = selected.includes(filter);
@@ -87,7 +122,7 @@ export function RegionPage({ citySlug, searchParams }: RegionPageProps) {
                   variant={active ? "default" : "outline"}
                   className="justify-start"
                 >
-                  <Link href={nextFilterHref(citySlug, selected, filter)}>{filter}</Link>
+                  <Link href={nextFilterHref(citySlug, selected, filter, searchParams?.district, searchParams?.sort)}>{filter}</Link>
                 </Button>
               );
             })}
@@ -100,13 +135,13 @@ export function RegionPage({ citySlug, searchParams }: RegionPageProps) {
             <div className="flex items-center gap-2">
               <ArrowUpDown className="h-4 w-4 text-muted-foreground" />
               <Button asChild variant={searchParams?.sort ? "outline" : "default"} size="sm">
-                <Link href={`/${citySlug}`}>推薦優先</Link>
+                <Link href={`/${citySlug}?${getParams(selected, searchParams?.district).toString()}`}>推薦優先</Link>
               </Button>
               <Button asChild variant={searchParams?.sort === "rating" ? "default" : "outline"} size="sm">
-                <Link href={`/${citySlug}?sort=rating`}>評分高到低</Link>
+                <Link href={`/${citySlug}?${getParams(selected, searchParams?.district, "rating").toString()}`}>評分高到低</Link>
               </Button>
               <Button asChild variant={searchParams?.sort === "price" ? "default" : "outline"} size="sm">
-                <Link href={`/${citySlug}?sort=price`}>價格低到高</Link>
+                <Link href={`/${citySlug}?${getParams(selected, searchParams?.district, "price").toString()}`}>價格低到高</Link>
               </Button>
             </div>
           </div>

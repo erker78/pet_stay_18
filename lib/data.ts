@@ -16,9 +16,12 @@ export type Hotel = {
   bookingUrl?: string;
   shareUrl?: string;
   websiteUrl?: string;
+  facebookUrl?: string;
+  instagramUrl?: string;
   googleMapUrl: string;
   description: string;
   priceDetails?: string[];
+  stayRulesUrl?: string;
   priceMin: number;
   priceMax: number;
   priceLabel?: string;
@@ -171,11 +174,21 @@ export const hotels: Hotel[] = [
     address: "806高雄市前鎮區振興里文林街 43 號",
     phone: "0978-829-128",
     lineId: "@797cxdrc",
+    facebookUrl: "https://www.facebook.com/p/%E5%A6%AE%E8%98%BF%E6%AF%9B%E5%AD%A9%E6%B2%99%E9%BE%8D%E6%97%85%E5%BA%97-61563294481634/",
+    instagramUrl: "https://www.instagram.com/niropet.hotel",
     googleMapUrl: "https://www.google.com/maps?q=妮蘿毛孩沙龍旅店&output=embed",
     description: "提供寵物住宿、美容與安親服務，重視毛孩在寄宿與整理過程中的舒適感，讓飼主可透過 LINE 先確認照護需求。",
-    priceMin: 0,
-    priceMax: 0,
-    priceLabel: "請洽店家",
+    priceDetails: [
+      "狗狗住宿價格",
+      "5kg 以下 NT$ 550 / 晚",
+      "6-12kg NT$ 650 / 晚",
+      "13-20kg NT$ 800 / 晚",
+      "21kg 以上 NT$ 2,100 / 晚"
+    ],
+    stayRulesUrl: "https://www.facebook.com/photo?fbid=122210904380443149&set=pcb.122210906666443149",
+    priceMin: 550,
+    priceMax: 2100,
+    rating: 5,
     isFeatured: false,
     petTypes: ["狗", "貓"],
     sizeLimits: ["請洽店家"],

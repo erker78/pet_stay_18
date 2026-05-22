@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CalendarCheck, ExternalLink, LineChart, MapPin, Phone, Share2, Star } from "lucide-react";
+import { CalendarCheck, ExternalLink, Facebook, Instagram, LineChart, MapPin, Phone, Share2, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -140,6 +140,14 @@ export default async function HotelDetailPage({ params }: PageProps) {
                   </ul>
                 </div>
               ) : null}
+              {hotel.stayRulesUrl ? (
+                <Button className="mt-5" variant="outline" asChild>
+                  <a href={hotel.stayRulesUrl} target="_blank" rel="noreferrer">
+                    查看住宿規則
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              ) : null}
             </CardContent>
           </Card>
 
@@ -204,6 +212,22 @@ export default async function HotelDetailPage({ params }: PageProps) {
                   <a href={hotel.websiteUrl} target="_blank" rel="noreferrer">
                     店家網站
                     <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              ) : null}
+              {hotel.facebookUrl ? (
+                <Button variant="outline" asChild>
+                  <a href={hotel.facebookUrl} target="_blank" rel="noreferrer">
+                    <Facebook className="mr-2 h-4 w-4" />
+                    Facebook
+                  </a>
+                </Button>
+              ) : null}
+              {hotel.instagramUrl ? (
+                <Button variant="outline" asChild>
+                  <a href={hotel.instagramUrl} target="_blank" rel="noreferrer">
+                    <Instagram className="mr-2 h-4 w-4" />
+                    Instagram
                   </a>
                 </Button>
               ) : null}

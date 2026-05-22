@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 type PageProps = {
-  searchParams?: Promise<{ filter?: string | string[]; service?: string; sort?: string }>;
+  searchParams?: Promise<{ filter?: string | string[]; service?: string; district?: string; sort?: string }>;
 };
 
 export default async function TainanPage({ searchParams }: PageProps) {
