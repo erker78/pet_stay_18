@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "隱私權政策",
-  description: "18寵物旅宿網隱私權政策，說明聯絡表單與網站使用資料處理方式。"
+  description: "18寵物旅宿網隱私權政策，說明聯絡表單與網站使用資料處理方式。",
+  alternates: { canonical: "/privacy-policy" }
 };
 
 export default function PrivacyPage() {

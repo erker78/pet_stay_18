@@ -7,7 +7,9 @@ import { Textarea } from "@/components/ui/textarea";
 
 export const metadata: Metadata = {
   title: "推薦店家刊登",
-  description: "寵物旅館、寵物安親與寵物美容店家可申請刊登於18寵物旅宿網，提升南部飼主搜尋曝光。"
+  description: "寵物旅館、寵物安親與寵物美容店家可申請刊登於18寵物旅宿網，提升搜尋曝光。",
+  alternates: { canonical: "/list-your-hotel" },
+  openGraph: { title: "推薦店家刊登", description: "申請免費刊登、精選曝光與合作導流。" }
 };
 
 const plans = [

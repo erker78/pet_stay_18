@@ -6,7 +6,9 @@ import { Textarea } from "@/components/ui/textarea";
 
 export const metadata: Metadata = {
   title: "聯絡我們",
-  description: "聯絡18寵物旅宿網，提供店家推薦、資料修正或合作需求。"
+  description: "聯絡18寵物旅宿網，提供店家推薦、資料修正或合作需求。",
+  alternates: { canonical: "/contact" },
+  openGraph: { title: "聯絡18寵物旅宿網", description: "提供店家推薦、資料修正或合作需求。" }
 };
 
 export default function ContactPage() {

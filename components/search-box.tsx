@@ -17,7 +17,7 @@ export function SearchBox() {
     const params = new URLSearchParams();
     params.set("filter", petType);
     params.set("service", service);
-    router.push(`/${city}?${params.toString()}`);
+    router.push(`/city/${city}?${params.toString()}`);
   }
 
   return (

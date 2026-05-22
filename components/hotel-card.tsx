@@ -4,7 +4,7 @@ import { MapPin, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { formatHotelPrice, type Hotel } from "@/lib/data";
+import { formatHotelPrice, getHotelDetailUrl, type Hotel } from "@/lib/data";
 
 type HotelCardProps = {
   hotel: Hotel;
@@ -31,7 +31,7 @@ export function HotelCard({ hotel }: HotelCardProps) {
         <div className="flex items-start justify-between gap-3">
           <div>
             <h3 className="text-lg font-bold leading-7">
-              <Link href={`/hotels/${hotel.slug}`}>{hotel.name}</Link>
+              <Link href={getHotelDetailUrl(hotel)}>{hotel.name}</Link>
             </h3>
             <p className="mt-1 flex items-center gap-1 text-sm text-muted-foreground">
               <MapPin className="h-4 w-4" aria-hidden="true" />
@@ -54,7 +54,7 @@ export function HotelCard({ hotel }: HotelCardProps) {
           ))}
         </div>
         <Button className="mt-5 w-full" asChild>
-          <Link href={`/hotels/${hotel.slug}`}>查看詳情</Link>
+          <Link href={getHotelDetailUrl(hotel)}>查看店家資訊</Link>
         </Button>
       </CardContent>
     </Card>

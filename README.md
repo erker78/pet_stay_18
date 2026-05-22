@@ -28,6 +28,14 @@ cp .env.example .env
 
 2. 修改 `.env` 的 `DATABASE_URL`，指向你的 PostgreSQL 資料庫。
 
+若要部署到正式網域，也請設定：
+
+```env
+NEXT_PUBLIC_SITE_URL="https://your-domain.example"
+```
+
+這個網址會用於 canonical、sitemap 與 robots 產生的絕對網址。
+
 3. 建立資料表並匯入 seed data：
 
 ```bash

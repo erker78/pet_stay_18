@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "關於我們",
-  description: "了解18寵物旅宿網如何協助南部飼主尋找可信任的寵物旅館與安親服務。"
+  description: "了解18寵物旅宿網如何整理台灣寵物旅館資訊、城市入口與住宿條件內容。",
+  alternates: { canonical: "/about" },
+  openGraph: { title: "關於18寵物旅宿網", description: "了解本站的資訊整理目標與內容原則。" }
 };
 
 export default function AboutPage() {

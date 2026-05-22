@@ -44,17 +44,37 @@ model Hotel {
   address      String
   phone        String?
   lineId       String?
+  lineUrl      String?
   websiteUrl   String?
+  facebookUrl  String?
+  instagramUrl String?
   googleMapUrl String?
   description  String
   priceMin     Int
   priceMax     Int
+  priceLabel   String?
+  priceRange   String?
   rating       Float        @default(0)
+  reviewCount  Int?
   isFeatured   Boolean      @default(false)
   isPublished  Boolean      @default(true)
   hours        String?
   sizeLimits   String[]
   tags         String[]
+  serviceTags  String[]      @default([])
+  hasNoCage    Boolean?
+  hasCctv      Boolean?
+  hasPickupService Boolean?
+  acceptsLargeDog Boolean?
+  acceptsCat   Boolean?
+  hasNightStaff Boolean?
+  hasVetSupport Boolean?
+  highlights   String[]      @default([])
+  notices      String[]      @default([])
+  faq          Json?
+  bookingUrl   String?
+  sourceUrl    String?
+  lastUpdated  DateTime?
   images       HotelImage[]
   services     Service[]    @relation("HotelServices")
   petTypes     PetType[]    @relation("HotelPetTypes")

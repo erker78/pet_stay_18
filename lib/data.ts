@@ -1,4 +1,9 @@
-export type CitySlug = "kaohsiung" | "tainan" | "pingtung";
+export type CitySlug = "taipei" | "new-taipei" | "taichung" | "kaohsiung" | "tainan" | "pingtung";
+
+export type HotelFaq = {
+  question: string;
+  answer: string;
+};
 
 export type Hotel = {
   id: string;
@@ -16,10 +21,26 @@ export type Hotel = {
   bookingUrl?: string;
   shareUrl?: string;
   websiteUrl?: string;
+  website?: string;
   facebookUrl?: string;
   instagramUrl?: string;
   googleMapUrl: string;
   description: string;
+  serviceTags?: string[];
+  priceRange?: string;
+  hasNoCage?: boolean;
+  hasCctv?: boolean;
+  hasPickupService?: boolean;
+  acceptsLargeDog?: boolean;
+  acceptsCat?: boolean;
+  hasNightStaff?: boolean;
+  hasVetSupport?: boolean;
+  highlights?: string[];
+  notices?: string[];
+  faq?: HotelFaq[];
+  reviewCount?: number;
+  sourceUrl?: string;
+  lastUpdated?: string;
   priceDetails?: string[];
   stayRulesUrl?: string;
   priceMin: number;
@@ -39,6 +60,9 @@ export type Hotel = {
 };
 
 export const cities = [
+  { name: "台北", slug: "taipei" as const, intro: "依生活圈比較台北寵物旅館、安親與貓咪住宿需求。" },
+  { name: "新北", slug: "new-taipei" as const, intro: "跨區交通與接送範圍是新北飼主常見的比較重點。" },
+  { name: "台中", slug: "taichung" as const, intro: "台中店家持續整理，先從熱門條件與城市入口找起。" },
   { name: "高雄", slug: "kaohsiung" as const, intro: "港都生活圈、捷運沿線與郊區寬敞旅宿一次看。" },
   { name: "台南", slug: "tainan" as const, intro: "從市區安親到近郊寵物住宿，幫毛孩找熟悉的節奏。" },
   { name: "屏東", slug: "pingtung" as const, intro: "適合長住、接送與戶外活動需求的南國寵物旅宿。" }
@@ -87,6 +111,8 @@ export const hotels: Hotel[] = [
     petTypes: ["狗", "貓"],
     sizeLimits: ["小型犬", "中型犬"],
     services: ["寵物住宿", "寵物安親", "24小時監視器", "接送服務"],
+    hasCctv: true,
+    hasPickupService: true,
     tags: ["近高鐵", "每日照片回報", "獨立套房"],
     hours: "週一至週日 09:00-21:00",
     images: imagePool.slice(0, 3).map((url, index) => ({ url, alt: `橘屋毛孩旅宿照片 ${index + 1}` }))
@@ -109,6 +135,7 @@ export const hotels: Hotel[] = [
     petTypes: ["狗"],
     sizeLimits: ["小型犬", "中型犬", "大型犬"],
     services: ["寵物住宿", "寵物安親", "接送服務"],
+    hasPickupService: true,
     tags: ["防滑地墊", "分區活動", "短住友善"],
     hours: "週一至週六 08:30-20:30",
     images: [imagePool[1], imagePool[3], imagePool[0]].map((url, index) => ({ url, alt: `河堤寵物安親館照片 ${index + 1}` }))
@@ -131,6 +158,7 @@ export const hotels: Hotel[] = [
     petTypes: ["狗", "貓"],
     sizeLimits: ["小型犬", "中型犬"],
     services: ["寵物住宿", "寵物美容", "24小時監視器"],
+    hasCctv: true,
     tags: ["貓狗分層", "美容加購", "空氣清淨"],
     hours: "週二至週日 10:00-20:00",
     images: [imagePool[4], imagePool[2], imagePool[3]].map((url, index) => ({ url, alt: `森呼吸貓狗旅店照片 ${index + 1}` }))
@@ -144,6 +172,7 @@ export const hotels: Hotel[] = [
     address: "高雄市前金區成功一路 352 號",
     phone: "0916-809-181",
     websiteUrl: "https://www.instagram.com/luca_petstay/",
+    instagramUrl: "https://www.instagram.com/luca_petstay/",
     googleMapUrl: "https://www.google.com/maps?q=高雄市前金區成功一路352號&output=embed",
     description: "提供狗狗住宿服務，依體重區間安排住宿價格，特殊需求服務會依實際照護內容另行加價。",
     priceDetails: [
@@ -162,6 +191,9 @@ export const hotels: Hotel[] = [
     sizeLimits: ["小型犬", "中型犬", "大型犬"],
     services: ["寵物住宿"],
     tags: ["狗狗住宿", "體重分級價格", "前金區"],
+    highlights: ["體重分級住宿價格", "前金區可聯絡官方 Instagram", "可接待大型犬"],
+    sourceUrl: "https://www.instagram.com/luca_petstay/",
+    lastUpdated: "2026-05-21",
     hours: "請洽店家確認",
     images: [imagePool[1], imagePool[0], imagePool[2]].map((url, index) => ({ url, alt: `Luca寵物旅宿照片 ${index + 1}` }))
   },
@@ -194,6 +226,9 @@ export const hotels: Hotel[] = [
     sizeLimits: ["請洽店家"],
     services: ["寵物住宿", "寵物安親", "寵物美容"],
     tags: ["美容服務", "寵物安親", "前鎮區"],
+    highlights: ["住宿、美容與安親資訊集中", "LINE 可先確認入住需求", "提供社群聯絡入口"],
+    sourceUrl: "https://www.facebook.com/p/%E5%A6%AE%E8%98%BF%E6%AF%9B%E5%AD%A9%E6%B2%99%E9%BE%8D%E6%97%85%E5%BA%97-61563294481634/",
+    lastUpdated: "2026-05-22",
     hours: "週一 10:00-18:00、週二休息、週三至週日 10:00-18:00",
     images: [imagePool[3], imagePool[0], imagePool[4]].map((url, index) => ({ url, alt: `妮蘿毛孩沙龍旅店照片 ${index + 1}` }))
   },
@@ -218,6 +253,9 @@ export const hotels: Hotel[] = [
     sizeLimits: ["請洽店家"],
     services: ["寵物住宿", "寵物安親", "寵物美容"],
     tags: ["貓咪住宿", "美容服務", "前鎮區"],
+    highlights: ["貓咪住宿與美容服務", "官方網站可確認服務內容", "可透過 LINE 或電話詢問"],
+    sourceUrl: "https://www.pet-bathing.com.tw/",
+    lastUpdated: "2026-05-21",
     hours: "週一至週日 10:00-19:00",
     images: [imagePool[4], imagePool[1], imagePool[0]].map((url, index) => ({ url, alt: `毛絨絨澡堂x貓茸茸旅館照片 ${index + 1}` }))
   },
@@ -378,5 +416,37 @@ export function formatPrice(min: number, max: number) {
 }
 
 export function formatHotelPrice(hotel: Hotel) {
-  return hotel.priceLabel ?? formatPrice(hotel.priceMin, hotel.priceMax);
+  return hotel.priceLabel ?? hotel.priceRange ?? formatPrice(hotel.priceMin, hotel.priceMax);
+}
+
+export function getHotelDetailUrl(hotel: Hotel) {
+  return `/pet-hotel/${hotel.city.slug}/${hotel.slug}`;
+}
+
+export function getHotelHighlights(hotel: Hotel) {
+  return hotel.highlights ?? hotel.tags;
+}
+
+export function getHotelNotices(hotel: Hotel) {
+  return hotel.notices ?? [
+    "店家入住條件、加價項目與可接待名額可能調整，預約前請再向官方確認。",
+    "請主動告知毛孩個性、健康狀態、飲食與用藥需求。"
+  ];
+}
+
+export function getHotelFaq(hotel: Hotel): HotelFaq[] {
+  return hotel.faq ?? [
+    {
+      question: `${hotel.name}適合哪些毛孩？`,
+      answer: `目前資料顯示可接待${hotel.petTypes.join("、")}，體型條件為${hotel.sizeLimits.join("、")}，仍以店家入住評估為準。`
+    },
+    {
+      question: `${hotel.name}要如何預約？`,
+      answer: hotel.lineId || hotel.lineUrl ? "可先使用 LINE 詢問名額、價格與入住規則。" : "可透過店家電話或官方連結確認名額與入住規則。"
+    }
+  ];
+}
+
+export function getHotelLastUpdated(hotel: Hotel) {
+  return hotel.lastUpdated ?? "2026-05-22";
 }

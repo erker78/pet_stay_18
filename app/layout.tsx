@@ -4,6 +4,7 @@ import "./globals.css";
 import { AdSenseScript } from "@/components/adsense-script";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { siteConfig } from "@/lib/site";
 
 const notoSansTc = Noto_Sans_TC({
   subsets: ["latin"],
@@ -13,14 +14,14 @@ const notoSansTc = Noto_Sans_TC({
 
 export const metadata: Metadata = {
   title: {
-    default: "18寵物旅宿網｜南部寵物旅館推薦",
+    default: "18寵物旅宿網｜台灣寵物旅館資訊與比較指南",
     template: "%s｜18寵物旅宿網"
   },
-  description: "18寵物旅宿網提供高雄、台南、屏東寵物旅館推薦，支援地區、寵物類型與服務條件篩選。",
-  metadataBase: new URL("https://petstay18.example.com"),
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url),
   openGraph: {
-    title: "18寵物旅宿網",
-    description: "幫毛孩找到安心住宿",
+    title: siteConfig.name,
+    description: siteConfig.description,
     locale: "zh_TW",
     siteName: "18寵物旅宿網",
     type: "website"

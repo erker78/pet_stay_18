@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { HeartHandshake, Menu } from "lucide-react";
+import { CompareLink } from "@/components/compare-link";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { href: "/kaohsiung", label: "高雄" },
-  { href: "/tainan", label: "台南" },
-  { href: "/pingtung", label: "屏東" },
+  { href: "/city/kaohsiung", label: "高雄" },
+  { href: "/tag/cctv", label: "熱門條件" },
+  { href: "/guides/how-to-choose-pet-hotel", label: "新手指南" },
   { href: "/list-your-hotel", label: "店家刊登" },
   { href: "/about", label: "關於我們" }
 ];
@@ -26,10 +27,14 @@ export function SiteHeader() {
               <Link href={item.href}>{item.label}</Link>
             </Button>
           ))}
+          <CompareLink />
         </nav>
-        <Button className="md:hidden" variant="ghost" size="icon" aria-label="開啟選單">
-          <Menu className="h-5 w-5" />
-        </Button>
+        <div className="flex items-center md:hidden">
+          <CompareLink compact />
+          <Button variant="ghost" size="icon" aria-label="開啟選單">
+            <Menu className="h-5 w-5" />
+          </Button>
+        </div>
       </div>
     </header>
   );
