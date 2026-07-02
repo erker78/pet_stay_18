@@ -1,0 +1,72 @@
+﻿import type { Hotel } from "@/lib/data";
+import { imagePool } from "@/lib/hotels/images";
+
+export const pingtungHotels: Hotel[] = [
+{
+    id: "pt-01",
+    name: "屏東暖窩寵物旅館",
+    slug: "pingtung-warm-nest",
+    city: { name: "屏東", slug: "pingtung" },
+    district: "屏東市",
+    address: "屏東縣屏東市自由路 168 號",
+    phone: "08-736-1818",
+    lineId: "@warmnest",
+    googleMapUrl: "https://www.google.com/maps?q=屏東縣屏東市自由路168號&output=embed",
+    description: "屏東市中心交通便利，提供住宿、安親與即時訊息回報，適合臨時出差或假日旅遊安排。",
+    priceMin: 650,
+    priceMax: 1500,
+    rating: 4.6,
+    isFeatured: true,
+    petTypes: ["狗", "貓"],
+    sizeLimits: ["小型犬", "中型犬"],
+    services: ["寵物住宿", "寵物安親", "24小時監視器"],
+    tags: ["市中心", "即時回報", "環境明亮"],
+    hours: "週一至週日 09:00-20:30",
+    images: [imagePool[0], imagePool[2], imagePool[3]].map((url, index) => ({ url, alt: `屏東暖窩寵物旅館照片 ${index + 1}` }))
+  },
+  {
+    id: "pt-02",
+    name: "恆春慢慢住寵物民宿",
+    slug: "hengchun-slow-stay-pets",
+    city: { name: "屏東", slug: "pingtung" },
+    district: "恆春鎮",
+    address: "屏東縣恆春鎮省北路 52 號",
+    phone: "08-889-2052",
+    lineId: "@slowstay",
+    googleMapUrl: "https://www.google.com/maps?q=屏東縣恆春鎮省北路52號&output=embed",
+    description: "靠近墾丁旅遊動線，可安排接送與戶外散步，適合南下旅行時讓毛孩有安穩落腳處。",
+    priceMin: 900,
+    priceMax: 2200,
+    rating: 4.8,
+    isFeatured: true,
+    petTypes: ["狗"],
+    sizeLimits: ["小型犬", "中型犬", "大型犬"],
+    services: ["寵物住宿", "接送服務", "24小時監視器"],
+    tags: ["近墾丁", "戶外散步", "旅行友善"],
+    hours: "週一至週日 08:30-21:00",
+    images: [imagePool[1], imagePool[3], imagePool[0]].map((url, index) => ({ url, alt: `恆春慢慢住寵物民宿照片 ${index + 1}` }))
+  },
+  {
+    id: "pt-03",
+    name: "潮州小太陽寵物館",
+    slug: "chaozhou-little-sun-pet",
+    city: { name: "屏東", slug: "pingtung" },
+    district: "潮州鎮",
+    address: "屏東縣潮州鎮延平路 99 號",
+    phone: "08-789-1199",
+    lineId: "@littlesunpet",
+    googleMapUrl: "https://www.google.com/maps?q=屏東縣潮州鎮延平路99號&output=embed",
+    description: "附設美容與安親服務，照護流程透明，適合平日托育、過夜住宿與定期整理毛髮。",
+    priceMin: 550,
+    priceMax: 1400,
+    rating: 4.4,
+    isFeatured: false,
+    petTypes: ["狗", "貓"],
+    sizeLimits: ["小型犬", "中型犬"],
+    services: ["寵物住宿", "寵物安親", "寵物美容"],
+    tags: ["美容服務", "平日托育", "價格親切"],
+    hours: "週二至週日 09:00-19:00",
+    images: [imagePool[2], imagePool[4], imagePool[1]].map((url, index) => ({ url, alt: `潮州小太陽寵物館照片 ${index + 1}` }))
+  }
+];
+

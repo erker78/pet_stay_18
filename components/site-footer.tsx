@@ -13,9 +13,9 @@ export function SiteFooter() {
         <div>
           <p className="font-semibold">地區入口</p>
           <div className="mt-3 grid gap-2 text-sm text-muted-foreground">
-            <Link href="/city/taipei">台北寵物旅館</Link>
-            <Link href="/city/taichung">台中寵物旅館</Link>
             <Link href="/city/kaohsiung">高雄寵物旅館</Link>
+            <Link href="/city/tainan">台南寵物旅館</Link>
+            <Link href="/city/pingtung">屏東寵物旅館</Link>
           </div>
         </div>
         <div>

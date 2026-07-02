@@ -1,7 +1,6 @@
 "use client";
 
 export const compareStorageKey = "petstay:compare";
-export const favoriteStorageKey = "petstay:favorites";
 export const selectionStorageEvent = "petstay:storage";
 
 export function readStoredSlugs(key: string) {
