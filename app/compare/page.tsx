@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "比較已選寵物旅館的價格、接待寵物、體型限制、服務條件與官方聯絡入口。",
   alternates: { canonical: "/compare" },
   openGraph: {
-    title: "寵物旅館比較清單｜18寵物旅宿網",
+    title: "寵物旅館比較清單｜毛孩旅宿指南",
     description: "把候選寵物旅館並排比較，再前往店家頁確認入住資訊。"
   },
   robots: {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = { title: "隱私權政策", description: "18寵物旅宿網的資料蒐集、聯絡表單與網站分析使用說明。", alternates: { canonical: "/privacy-policy" }, openGraph: { title: "隱私權政策", description: "了解18寵物旅宿網如何處理使用者資料。" } };
+export const metadata: Metadata = { title: "隱私權政策", description: "毛孩旅宿指南的資料蒐集、聯絡表單與網站分析使用說明。", alternates: { canonical: "/privacy-policy" }, openGraph: { title: "隱私權政策", description: "了解毛孩旅宿指南如何處理使用者資料。" } };
 
 export default function PrivacyPolicyPage() {
   return <Policy title="隱私權政策" paragraphs={["我們僅在使用者主動提交表單或聯絡需求時蒐集必要資訊，用於回覆、資料修正與合作處理。", "網站可能使用分析與廣告技術改善內容體驗。若啟用第三方服務，相關服務可能依其政策處理 cookie 或裝置資訊。", "若需查詢、修正或刪除已提交資料，請透過聯絡頁提出。"]} />;

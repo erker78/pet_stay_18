@@ -14,8 +14,8 @@ const notoSansTc = Noto_Sans_TC({
 
 export const metadata: Metadata = {
   title: {
-    default: "18寵物旅宿網｜台灣寵物旅館資訊與比較指南",
-    template: "%s｜18寵物旅宿網"
+    default: "毛孩旅宿指南｜台灣寵物旅館資訊與比較指南",
+    template: "%s｜毛孩旅宿指南"
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     locale: "zh_TW",
-    siteName: "18寵物旅宿網",
+    siteName: "毛孩旅宿指南",
     type: "website"
   }
 };

@@ -12,7 +12,7 @@ export const kaohsiungHotels: Hotel[] = [
     phone: "07-345-1818",
     lineId: "@orange-paws",
     bookingUrl: "tel:07-345-1818",
-    shareUrl: "https://petstay18.example.com/hotels/orange-paws-kaohsiung",
+    shareUrl: "https://maohai-stay-guide.example.com/hotels/orange-paws-kaohsiung",
     websiteUrl: "https://example.com/orange-paws",
     googleMapUrl: "https://www.google.com/maps?q=高雄市左營區文自路18號&output=embed",
     description: "鄰近高鐵與捷運，提供獨立房型、全天候攝影機與每日散步回報。適合第一次外宿或需要穩定作息的狗狗。",
@@ -207,5 +207,56 @@ export const kaohsiungHotels: Hotel[] = [
     hours: "週一至週日 11:00-20:00",
     images: [imagePool[4], imagePool[3], imagePool[0]].map((url, index) => ({ url, alt: `痴心人貓舍照片 ${index + 1}` }))
   },
+  {
+    id: "kh-08",
+    name: "熊大心寵物精品旅館",
+    slug: "line-me",
+    city: {
+      name: "高雄",
+      slug: "kaohsiung"
+    },
+    district: "鼓山區",
+    address: "804高雄市鼓山區興宗里鼓山二路110號",
+    phone: "07 551 6688",
+    lineUrl: "https://line.me/ti/p/R6BGN9AefE",
+    facebookUrl: "https://www.facebook.com/SDSpethotel/",
+    googleMapUrl: "https://www.google.com/maps?q=804%E9%AB%98%E9%9B%84%E5%B8%82%E9%BC%93%E5%B1%B1%E5%8D%80%E8%88%88%E5%AE%97%E9%87%8C%E9%BC%93%E5%B1%B1%E4%BA%8C%E8%B7%AF110%E8%99%9F&output=embed",
+    description: "熊大心寵物精品旅館位於高雄鼓山區，目前已整理 Google Maps 上的地址、電話、營業時間與官方連結。實際住宿價格、可接待寵物與入住規則，建議預約前再向店家確認。",
+    highlights: [
+      "Google Maps 基本資料已匯入",
+      "住宿公約已整理",
+      "提供美容服務注意事項"
+    ],
+    notices: [
+      "住宿營業時間為 10:00-19:00；第一次入住建議 18:30 前抵達，需交接毛孩入住注意事項，第二次住宿可於 19:00 前到。",
+      "如退宿當日無洗澡且超過入住時間，會收取安親費用；狗狗以每小時 NT$60-150 計，貓咪每小時 NT$200 起，同房兩隻另計。如有洗澡則不需負擔安親費。",
+      "最晚退宿時間為 19:00，逾時不候。",
+      "美容洗澡包含剪指甲、剃腳底毛、剃肛門毛、肚子毛、清耳朵、拔耳毛、擠肛門腺、修腳圓與修眼角；如需修整個頭請提前告知，會酌收修頭費用 NT$100 起。",
+      "美容額外項目包含刷牙 NT$50 起、剪指甲 NT$50 起、拆結費 NT$100 起、修頭 NT$100 起。",
+      "美容前請主動告知毛孩是否有特殊病史；洗澡者請於 16:30-17:00 前入館，大修剪、毛球與剪毛者請於 16:00 前入館。",
+      "有打疫苗的毛孩需一個禮拜後才能洗澡，避免免疫力下降造成容易感冒或生病。",
+      "身上有攜帶跳蚤、壁蝨者，會另外收取除蚤與環境清潔費 NT$100 起；毛孩若攻擊美容師，會另外酌收手折修費 NT$100 起。"
+    ],
+    reviewCount: 58,
+    sourceUrl: "https://line.me/ti/p/R6BGN9AefE",
+    lastUpdated: "2026-07-30",
+    priceMin: 0,
+    priceMax: 0,
+    priceLabel: "請洽店家",
+    rating: 4.3,
+    isFeatured: false,
+    petTypes: [],
+    sizeLimits: [
+      "請洽店家"
+    ],
+    services: [
+      "寵物住宿",
+      "寵物美容"
+    ],
+    tags: [
+      "鼓山區"
+    ],
+    hours: "星期一: 10:00 – 19:00、星期二: 10:00 – 19:00、星期三: 10:00 – 19:00、星期四: 10:00 – 19:00、星期五: 10:00 – 19:00、星期六: 10:00 – 19:00、星期日: 10:00 – 19:00",
+    images: [imagePool[0], imagePool[1], imagePool[2]].map((url, index) => ({ url, alt: `熊大心寵物精品旅館照片 ${index + 1}` }))
+  },
 ];
-

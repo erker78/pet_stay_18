@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "hotel:import": "tsx scripts/import-hotel-from-google-maps.ts",
+    "hotel:publish": "tsx scripts/publish-hotel-draft.ts",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts"

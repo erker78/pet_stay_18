@@ -19,7 +19,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const tag = tagBySlug((await params).tag);
   if (!tag) return { title: "找不到條件" };
-  const title = `${tag.title}推薦｜18寵物旅宿網`;
+  const title = `${tag.title}推薦｜毛孩旅宿指南`;
   return { title, description: tag.description, alternates: { canonical: `/tag/${tag.slug}` }, openGraph: { title, description: tag.description } };
 }
 

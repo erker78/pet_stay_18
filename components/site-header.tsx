@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 
 const navItems = [
   { href: "/city/kaohsiung", label: "高雄" },
+  { href: "/city/tainan", label: "台南" },
+  { href: "/city/pingtung", label: "屏東" },
   { href: "/tag/cctv", label: "熱門條件" },
   { href: "/guides/how-to-choose-pet-hotel", label: "新手指南" },
   { href: "/list-your-hotel", label: "店家刊登" },
@@ -19,7 +21,7 @@ export function SiteHeader() {
           <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
             <HeartHandshake className="h-5 w-5" aria-hidden="true" />
           </span>
-          <span>18寵物旅宿網</span>
+          <span>毛孩旅宿指南</span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex" aria-label="主選單">
           {navItems.map((item) => (

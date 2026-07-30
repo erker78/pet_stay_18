@@ -5,7 +5,7 @@ export function SiteFooter() {
     <footer className="border-t bg-white">
       <div className="container-px grid gap-8 py-10 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <p className="text-lg font-bold">18寵物旅宿網</p>
+          <p className="text-lg font-bold">毛孩旅宿指南</p>
           <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">
             以城市、照護條件與內容指南整理台灣寵物旅館資訊，協助飼主先比較再聯絡官方。
           </p>

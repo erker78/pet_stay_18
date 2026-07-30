@@ -25,6 +25,7 @@ export function HotelDetail({ hotel }: { hotel: Hotel }) {
   const relatedHotels = getRelatedHotels(hotel);
   const faq = getHotelFaq(hotel);
   const detailUrl = getHotelDetailUrl(hotel);
+  const lineHref = hotel.lineUrl ?? (hotel.lineId ? `https://line.me/R/ti/p/${hotel.lineId}` : undefined);
   const relatedTags = hotelTagSlugs(hotel).map((slug) => tagBySlug(slug)).filter(Boolean);
   const jsonLd = [
     {
@@ -43,7 +44,7 @@ export function HotelDetail({ hotel }: { hotel: Hotel }) {
       },
       image: hotel.images.map((image) => image.url),
       priceRange: formatHotelPrice(hotel),
-      sameAs: [hotel.websiteUrl, hotel.facebookUrl, hotel.instagramUrl].filter(Boolean)
+      sameAs: [hotel.websiteUrl, hotel.facebookUrl, hotel.instagramUrl, hotel.lineUrl].filter(Boolean)
     },
     {
       "@context": "https://schema.org",
@@ -90,7 +91,7 @@ export function HotelDetail({ hotel }: { hotel: Hotel }) {
                 <p className="mt-1 text-2xl font-black text-primary">{formatHotelPrice(hotel)}</p>
                 <div className="mt-5 grid gap-3">
                   {hotel.bookingUrl ? <Cta href={hotel.bookingUrl} icon={CalendarCheck}>預約導流</Cta> : null}
-                  {hotel.lineId ? <Cta href={hotel.lineUrl ?? `https://line.me/R/ti/p/${hotel.lineId}`} icon={LineChart} variant="outline">LINE 詢問</Cta> : null}
+                  {lineHref ? <Cta href={lineHref} icon={LineChart} variant="outline">LINE 詢問</Cta> : null}
                   {hotel.websiteUrl ? <Cta href={hotel.websiteUrl} icon={ExternalLink} variant="outline">前往官方網站</Cta> : null}
                   {hotel.shareUrl ? <Cta href={hotel.shareUrl} icon={Share2} variant="secondary">分享店家</Cta> : null}
                   <HotelActions slug={hotel.slug} />
@@ -129,8 +130,8 @@ export function HotelDetail({ hotel }: { hotel: Hotel }) {
             <div className="grid gap-4 text-sm">
               <p><span className="block font-semibold">地址</span><span className="text-muted-foreground">{hotel.address}</span></p>
               {hotel.phone ? <p><span className="block font-semibold">電話</span><a className="inline-flex items-center gap-1 text-primary" href={`tel:${hotel.phone}`}><Phone className="h-4 w-4" />{hotel.phone}</a></p> : null}
-              {hotel.lineId ? <p><span className="block font-semibold">LINE</span><span className="text-muted-foreground">{hotel.lineId}</span></p> : null}
-              <p><span className="block font-semibold">營業時間</span><span className="text-muted-foreground">{hotel.hours}</span></p>
+              {lineHref ? <p><span className="block font-semibold">LINE</span><a className="text-primary" href={lineHref} target="_blank" rel="noreferrer">{hotel.lineId ?? "LINE 詢問"}</a></p> : null}
+              <p><span className="block font-semibold">營業時間</span><BusinessHours hours={hotel.hours} /></p>
               {hotel.facebookUrl ? <Social href={hotel.facebookUrl} icon={Facebook}>Facebook</Social> : null}
               {hotel.instagramUrl ? <Social href={hotel.instagramUrl} icon={Instagram}>Instagram</Social> : null}
             </div>
@@ -175,6 +176,16 @@ function Media({ image, priority, className }: { image: Hotel["images"][number];
 
 function PriceDetails({ items }: { items: string[] }) {
   return <div className="mt-5 rounded-xl bg-muted p-4"><h3 className="font-bold">{items[0]}</h3><ul className="mt-3 grid gap-2 text-sm text-muted-foreground">{items.slice(1).map((detail) => <li key={detail}>{detail}</li>)}</ul></div>;
+}
+
+function BusinessHours({ hours }: { hours: string }) {
+  const items = hours.split("、").map((item) => item.trim()).filter(Boolean);
+
+  if (items.length <= 1) {
+    return <span className="text-muted-foreground">{hours}</span>;
+  }
+
+  return <span className="mt-1 grid gap-1 text-muted-foreground">{items.map((item) => <span key={item}>{item}</span>)}</span>;
 }
 
 function TagList({ items }: { items: string[] }) {

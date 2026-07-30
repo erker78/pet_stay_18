@@ -7,15 +7,15 @@ import { Textarea } from "@/components/ui/textarea";
 
 export const metadata: Metadata = {
   title: "推薦店家刊登",
-  description: "寵物旅館、寵物安親與寵物美容店家可申請刊登於18寵物旅宿網，提升搜尋曝光。",
+  description: "如果你的店有提供寵物住宿、安親或美容服務，歡迎補充資料，讓飼主更容易找到你。",
   alternates: { canonical: "/list-your-hotel" },
-  openGraph: { title: "推薦店家刊登", description: "申請免費刊登、精選曝光與合作導流。" }
+  openGraph: { title: "推薦店家刊登", description: "補齊店家資料，讓飼主在搜尋前就看懂你的服務。" }
 };
 
 const plans = [
-  { icon: CheckCircle2, title: "免費刊登", text: "建立基本店家資料頁，包含地址、電話、服務項目與預約導流。" },
-  { icon: Star, title: "精選曝光", text: "在地區列表獲得較高排序與精選標籤，適合想提高詢問量的店家。" },
-  { icon: Home, title: "首頁推薦", text: "出現在首頁精選寵物旅館區塊，適合新開幕、活動檔期或品牌曝光。" }
+  { icon: CheckCircle2, title: "免費刊登", text: "先把店名、地址、電話、服務項目和官方連結補上，讓飼主找得到正確資訊。" },
+  { icon: Star, title: "精選曝光", text: "資料較完整、適合被優先看到的店家，可以放到城市頁或條件頁較前面的位置。" },
+  { icon: Home, title: "首頁推薦", text: "如果有新開幕、空房檔期或想推特定服務，可以再討論首頁曝光。" }
 ];
 
 export default function ListYourHotelPage() {
@@ -28,9 +28,9 @@ export default function ListYourHotelPage() {
               <Megaphone className="h-4 w-4" />
               推薦店家刊登
             </div>
-            <h1 className="mt-5 text-4xl font-black tracking-normal md:text-5xl">讓南部飼主更快找到你的寵物旅館</h1>
+            <h1 className="mt-5 text-4xl font-black tracking-normal md:text-5xl">讓正在找住宿的飼主，看懂你的店</h1>
             <p className="mt-5 text-lg leading-8 text-muted-foreground">
-              歡迎寵物住宿、安親、美容與接送服務店家申請刊登。我們會協助整理店家資訊，讓飼主能清楚比較並直接聯絡預約。
+              很多飼主不是不想預約，而是不知道你的店能不能收貓、能不能收大型犬、價格怎麼算、要從哪裡問。把資料整理清楚，詢問會少一點來回，也更容易找到合適的客人。
             </p>
           </div>
           <Card>
